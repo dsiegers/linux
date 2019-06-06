@@ -2083,6 +2083,8 @@ struct page *alloc_pages_current(gfp_t gfp, unsigned order)
 	if (!in_interrupt() && !(gfp & __GFP_THISNODE))
 		pol = get_task_policy(current);
 
+	printk("allocate pages: %d pages\n", 1 << order);
+
 	/*
 	 * No reference counting needed for current->mempolicy
 	 * nor system default_policy
