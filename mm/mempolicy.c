@@ -2017,8 +2017,6 @@ alloc_pages_vma(gfp_t gfp, int order, struct vm_area_struct *vma,
 
 	pol = get_vma_policy(vma, addr);
 
-	printk("kernel print test line 2020 - mempolicy.c");
-
 	if (pol->mode == MPOL_INTERLEAVE) {
 		unsigned nid;
 
@@ -2081,8 +2079,6 @@ struct page *alloc_pages_current(gfp_t gfp, unsigned order)
 {
 	struct mempolicy *pol = &default_policy;
 	struct page *page;
-
-	printk("allocate pages: %d pages\n", 1 << order);
 
 	if (!in_interrupt() && !(gfp & __GFP_THISNODE))
 		pol = get_task_policy(current);
@@ -2489,8 +2485,6 @@ void mpol_shared_policy_init(struct shared_policy *sp, struct mempolicy *mpol)
 	sp->root = RB_ROOT;		/* empty tree == default mempolicy */
 	rwlock_init(&sp->lock);
 
-	printk("kernel print test line 2492 - mempolicy.c");
-
 	if (mpol) {
 		struct vm_area_struct pvma;
 		struct mempolicy *new;
@@ -2839,8 +2833,6 @@ void mpol_to_str(char *buffer, int maxlen, struct mempolicy *pol)
 	nodemask_t nodes = NODE_MASK_NONE;
 	unsigned short mode = MPOL_DEFAULT;
 	unsigned short flags = 0;
-
-	printk("kernel print test line 2843 - mempolicy.c");
 
 	if (pol && pol != &default_policy && !(pol->flags & MPOL_F_MORON)) {
 		mode = pol->mode;
