@@ -244,6 +244,8 @@ static int malloc_count;
 
 static void *malloc(int size)
 {
+	printk("this is a kernel log print for malloc in lib/inflate.c");
+
        void *p;
 
        if (size < 0)
